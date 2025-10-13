@@ -1,0 +1,13 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "height": 260,
+  "autosize": { "type": "fit", "contains": "padding" },
+  "data": {"url":"../compare_timeseries.csv"},
+  "mark":{"type":"line","interpolate":"monotone"},
+  "encoding":{
+    "x":{"field":"year","type":"quantitative","axis":{"format":"d"},"title":"Year"},
+    "y":{"field":"co2_per_capita","type":"quantitative","title":"CO₂ per capita (t)"},
+    "color":{"field":"name","type":"nominal","title":"Country"}
+  }
+}

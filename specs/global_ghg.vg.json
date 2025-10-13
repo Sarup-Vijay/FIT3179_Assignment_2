@@ -1,0 +1,17 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "height": 240,
+  "autosize": { "type": "fit", "contains": "padding" },
+  "data": {"url":"../global_summary.csv"},
+  "transform":[
+    {"fold":["co2_including_luc","methane","nitrous_oxide"],"as":["gas","value"]},
+    {"calculate":"datum.gas=='co2_including_luc'?'CO₂ (incl. LUC)':(datum.gas=='methane'?'Methane (CH₄)':'Nitrous oxide (N₂O)')","as":"gas_label"}
+  ],
+  "mark":{"type":"area"},
+  "encoding":{
+    "x":{"field":"year","type":"quantitative","axis":{"format":"d"}},
+    "y":{"aggregate":"sum","field":"value","type":"quantitative","title":"Relative scale (index)"},
+    "color":{"field":"gas_label","type":"nominal","title":"GHG component"}
+  }
+}

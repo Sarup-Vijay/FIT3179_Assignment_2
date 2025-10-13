@@ -1,0 +1,42 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "height": 420,
+  "projection": { "type": "naturalEarth1" },
+  "layer": [
+    {
+      "data": {
+        "url": "../assets/countries.geojson",
+        "format": { "type": "topojson", "feature": "countries" }
+      },
+      "mark": { "type": "geoshape", "fill": "#f0f3f8", "stroke": "#d4dbe7" }
+    },
+    {
+      "data": { "url": "../map_points.csv" },
+      "mark": { "type": "circle", "opacity": 0.85, "stroke": "#222", "strokeWidth": 0.3 },
+      "encoding": {
+        "longitude": { "field": "lon", "type": "quantitative" },
+        "latitude":  { "field": "lat", "type": "quantitative" },
+        "size": {
+          "field": "co2_per_capita",
+          "type": "quantitative",
+          "scale": { "type": "sqrt", "range": [40, 120] },
+          "title": "CO₂ per capita (t)"
+        },
+        "color": {
+          "field": "co2_per_capita",
+          "type": "quantitative",
+          "scale": { "scheme": "tealblues" },
+          "title": "CO₂ per capita (t)"
+        },
+        "tooltip": [
+          { "field": "name", "title": "Country" },
+          { "field": "co2_per_capita", "title": "CO₂ per capita (t)", "format": ".2f" },
+          { "field": "co2", "title": "CO₂ total (Mt)", "format": ".0f" },
+          { "field": "share_global_co2", "title": "Share global CO₂", "format": ".1%" },
+          { "field": "year", "title": "Year" }
+        ]
+      }
+    }
+  ]
+}
