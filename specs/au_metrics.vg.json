@@ -4,7 +4,7 @@
   "vconcat": [
     {
       "height": 180,
-      "data": {"url": "../au_timeseries.csv"},
+      "data": {"url": "/FIT3179_Assignment_2/au_timeseries.csv"},
       "mark": {"type": "area", "opacity": 0.8},
       "encoding": {
         "x": {"field": "year", "type": "quantitative", "axis": {"format": "d"}},
@@ -13,7 +13,7 @@
     },
     {
       "height": 160,
-      "data": {"url": "../au_timeseries.csv"},
+      "data": {"url": "/FIT3179_Assignment_2/au_timeseries.csv"},
       "mark": {"type": "line"},
       "encoding": {
         "x": {"field": "year", "type": "quantitative", "axis": {"format": "d"}},
@@ -22,7 +22,7 @@
     },
     {
       "height": 160,
-      "data": {"url": "../au_timeseries.csv"},
+      "data": {"url": "/FIT3179_Assignment_2/au_timeseries.csv"},
       "mark": {"type": "line"},
       "encoding": {
         "x": {"field": "year", "type": "quantitative", "axis": {"format": "d"}},
