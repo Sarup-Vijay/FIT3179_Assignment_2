@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Australia's Emissions in Context — A Vega-Lite Story</title>
+  <link rel="stylesheet" href="https://unpkg.com/purecss@2.2.0/build/pure-min.css">
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans'; margin:0; color:#222; line-height:1.5; }
+    header { background:#f5f7fb; padding: 2rem 1rem; border-bottom: 1px solid #e6e9f2; }
+    main   { max-width: 1200px; margin: 0 auto; padding: 1rem; }
+    .chart { display:block; width:100%; min-height:260px; }   /* single rule */
+    h1,h2  { margin:.4rem 0 .6rem; }
+    .kicker{ color:#4b5563; font-size:.95rem; }
+    .note  { color:#555; font-size:.92rem; }
+    .pill  { display:inline-block; padding:.2rem .6rem; border-radius:999px; background:#eaf5f0; margin-right:.3rem; font-size:.8rem; }
+    .credits{ font-size:.85rem; color:#666; }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+</head>
+<body>
+  <header>
+    <main>
+      <h1>Australia’s Emissions: the story since 1990</h1>
+      <p class="kicker">
+        A visual brief for Australians: where we sit globally, what’s driving our CO₂, and how our per-person footprint compares with our neighbours.
+      </p>
+
+      <p class="note">
+        <strong>Purpose.</strong> Carbon dioxide (CO₂) emissions play a significant role in shaping the enviornment. This visualisation explores key data on 
+        Australia's CO₂ output, offering insights into how different sectors contribute to the national total over time. 
+      </p>
+
+      <ul class="note" style="margin-top:.6rem">
+        <li><strong>Scope:</strong> Australia, 1990 – present, with regional peers for context.</li>
+        <li><strong>What you’ll see:</strong> a world map, a fuel-mix stack, per-capita trends, key Aussie metrics, and a global GHG split.</li>
+      </ul>
+    </main>
+  </header>
+  <main>
+    <h2>Where does Australia sit right now?</h2>
+    <p class="note">Following map shows selected set of countries, each with circle representing one country. Both the size and the colour of the circle encode
+      — CO₂ emissions per person in the latest year : means larger, darker circles signal higher per-capita emissions. Hovering reveals country name, 
+      CO₂ per person, total national CO₂, its share of global CO₂, and the year. Using per-capita values helps compare energy systems and lifestyles across 
+      countries with very different populations</p>
+    <div id="map" class="chart"></div>
+    <p class="note">What stands out is that Australia’s per-person footprint is high: our circle is larger and darker than most in our region. 
+      Neighbours vary widely — New Zealand is somewhat lower; Indonesia and India are much lower per person; Japan and the UK sit in the mid-to-high range. 
+      It’s also important to distinguish totals from per-person measures: for example, China may show lower per-capita emissions than 
+      Australia, yet contributes a larger share of global CO₂ because its population is far bigger. </p>
+
+    <p class="note"> Key takeaway is that Australia’s per-capita emissions remain high relative to many peers, even as total 
+    emissions move around over time. This sets up the next sections, where we unpack which sources drive Australia’s CO₂ and how our per-person trend has changed since 1990</p>
+
+    <h2>What's driving Australia's CO₂?</h2>
+    <p class="note">Stacked sources show coal, oil, gas, cement, flaring and land-use change contributions since 1990.</p>
+    <div id="fuel" class="chart"></div>
+    <p class="note">Coal is the dominant source, followed by oil and gas. Together, these three fossil fuels account for the vast majority of Australia's CO₂
+      emissions. Cement production, flaring, and land-use change contribute smaller shares. Over time, coal's share has decreased slightly, while gas has increased. 
+      Oil has remained relatively stable. The overall trend shows fluctuations in total emissions, with a peak around the mid-2000s followed by a gradual decline.
+      The big picture: Australia’s total emissions are driven mainly by fossil fuels—especially coal—with only gradual shifts in 
+       the mix over time</p>
+
+    <h2>How do we compare with neighbours</h2>
+    <p class="note">Per-capita emissions since 1990 across a small comparator set.</p>
+    <div id="compare" class="chart"></div>
+    <p class="note">Australia’s per-capita emissions have trended downwards since 1990, but remain high relative to many peers. 
+      New Zealand has also seen a decline, though it started from a lower base. Japan and the UK have experienced significant reductions, reflecting shifts in 
+      energy policy and efficiency measures. 
+      Indonesia and India, while starting from much lower per-capita levels, have seen gradual increases as their economies grow. 
+      The key takeaway is that while Australia has made progress in reducing its per-capita emissions, it still lags behind several of its regional peers.</p>
+
+    <h2>Australia's key metrics at a glance</h2>
+    <p class="note">Total CO₂, per-capita CO₂, and share of global CO₂. Read left-to-right for the change through time.</p>
+    <div id="austats" class="chart"></div>
+    <p class="note">Australia’s total CO₂ emissions have fluctuated over time, with a peak around the mid-2000s followed by a gradual decline. 
+      Per-capita emissions have also trended downwards, reflecting improvements in energy efficiency and shifts in the energy mix. 
+      However, Australia's share of global CO₂ emissions has remained relatively stable, indicating that while national efforts to reduce emissions are evident, 
+      they have not significantly altered Australia's position in the global context. The overall picture is one of progress, but also of ongoing challenges in 
+      addressing climate change on both a national and global scale.</p>
+
+    <h2>Global greenhouse gases</h2>
+    <p class="note">A simple global view across CO₂ (incl. land-use change), methane, and nitrous oxide.</p>
+    <div id="ghg" class="chart"></div>
+    <p class="note">CO₂ is the largest contributor to global greenhouse gas emissions, followed by methane and nitrous oxide. 
+      CO₂ emissions have been steadily increasing over time, driven primarily by fossil fuel combustion and deforestation. 
+      Methane emissions have also risen, largely due to agricultural activities and fossil fuel extraction. Nitrous oxide emissions have seen a more gradual increase, primarily from agricultural sources. 
+      The overall trend indicates a growing challenge in managing greenhouse gas emissions globally, with significant implications for climate change mitigation efforts.</p>
+  </main>
+
+  <script>
+    vegaEmbed('#map', 'specs/map.vg.json', {actions:false}).catch(console.error);
+    vegaEmbed('#fuel', 'specs/fuel_stack_au.vg.json', {actions:false}).catch(console.error);
+    vegaEmbed('#compare', 'specs/compare_percap.vg.json', {actions:false}).catch(console.error);
+    vegaEmbed('#austats', 'specs/au_metrics.vg.json', {actions:false}).catch(console.error);
+    vegaEmbed('#ghg', 'specs/global_ghg.vg.json', {actions:false}).catch(console.error);
+  </script>
+
+</body>
+</html>
