@@ -3,7 +3,7 @@
   "width": "container",
   "height": 260,
   "autosize": { "type": "fit", "contains": "padding" },
-  "data": {"url":"../compare_timeseries.csv"},
+  "data": {"url":"/FIT3179_Assignment_2/compare_timeseries.csv"},
   "mark":{"type":"line","interpolate":"monotone"},
   "encoding":{
     "x":{"field":"year","type":"quantitative","axis":{"format":"d"},"title":"Year"},
