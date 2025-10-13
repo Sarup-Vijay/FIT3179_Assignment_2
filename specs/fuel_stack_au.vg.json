@@ -3,7 +3,7 @@
   "width": "container",
   "height": 260,
   "autosize": { "type": "fit", "contains": "padding" },
-  "data": {"url":"../au_timeseries.csv"},
+  "data": {"url":"/FIT3179_Assignment_2/au_timeseries.csv"},
   "transform":[{"fold":["coal_co2","oil_co2","gas_co2","cement_co2","flaring_co2","land_use_change_co2"],"as":["source","emissions"]}],
   "mark":{"type":"area"},
   "encoding":{
