@@ -6,13 +6,13 @@
   "layer": [
     {
       "data": {
-        "url": "../assets/countries.geojson",
+        "url": "/FIT3179_Assignment_2/assets/countries.geojson",
         "format": { "type": "topojson", "feature": "countries" }
       },
       "mark": { "type": "geoshape", "fill": "#f0f3f8", "stroke": "#d4dbe7" }
     },
     {
-      "data": { "url": "../map_points.csv" },
+      "data": { "url": "/FIT3179_Assignment_2/map_points.csv" },
       "mark": { "type": "circle", "opacity": 0.85, "stroke": "#222", "strokeWidth": 0.3 },
       "encoding": {
         "longitude": { "field": "lon", "type": "quantitative" },
