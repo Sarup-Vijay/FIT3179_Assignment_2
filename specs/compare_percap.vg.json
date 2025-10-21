@@ -1,13 +1,92 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": "container",
-  "height": 260,
+  "height": 300,
   "autosize": { "type": "fit", "contains": "padding" },
-  "data": {"url":"/FIT3179_Assignment_2/compare_timeseries.csv"},
-  "mark":{"type":"line","interpolate":"monotone"},
-  "encoding":{
-    "x":{"field":"year","type":"quantitative","axis":{"format":"d"},"title":"Year"},
-    "y":{"field":"co2_per_capita","type":"quantitative","title":"CO₂ per capita (t)"},
-    "color":{"field":"name","type":"nominal","title":"Country"}
-  }
+
+  "data": { "url": "../compare_timeseries.csv" },
+
+  "params": [{
+    "name": "countrySel",
+    "value": "United States",
+    "bind": {
+      "input": "select",
+      "name": "Compare with: ",
+      "options": [
+        "United States",
+        "China",
+        "India",
+        "Indonesia",
+        "Japan",
+        "New Zealand",
+        "United Kingdom",
+        "Australia"
+      ]
+    }
+  }],
+
+  "transform": [
+    { "filter": "datum.name == 'Australia' || datum.name == countrySel" }
+  ],
+
+  "mark": { "type": "line", "interpolate": "monotone" },
+
+  "encoding": {
+    "x": { "field": "year", "type": "quantitative", "axis": { "format": "d", "title": "Year" } },
+    "y": { "field": "co2_per_capita", "type": "quantitative", "title": "CO₂ per capita (t)" },
+
+    "color": {
+      "field": "name",
+      "type": "nominal",
+      "title": "Country",
+      "scale": {
+        "domain": [
+          "Australia",
+          "China",
+          "India",
+          "Indonesia",
+          "Japan",
+          "New Zealand",
+          "United Kingdom",
+          "United States"
+        ],
+        "range": [
+          "#0072B2",  
+          "#D55E00",  
+          "#E69F00",  
+          "#009E73",  
+          "#CC79A7",  
+          "#56B4E9",  
+          "#F0E442",  
+          "#000000"   
+        ]
+      },
+      "legend": { "title": "Country" }
+    },
+
+    
+    "size": {
+      "condition": [
+        { "test": "datum.name == 'Australia'", "value": 3.2 },
+        { "test": "datum.name == countrySel", "value": 2.6 }
+      ],
+      "value": 1.6
+    },
+
+    
+    "opacity": {
+      "condition": [
+        { "test": "datum.name == 'Australia' || datum.name == countrySel", "value": 1 }
+      ],
+      "value": 0.25
+    },
+
+    "tooltip": [
+      { "field": "name", "title": "Country" },
+      { "field": "year", "type": "quantitative", "format": "d" },
+      { "field": "co2_per_capita", "title": "CO₂ per capita (t)", "format": ".2f" }
+    ]
+  },
+
+  "config": { "axis": { "grid": true } }
 }
