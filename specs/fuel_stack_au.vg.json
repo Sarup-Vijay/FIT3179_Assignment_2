@@ -3,7 +3,7 @@
   "width": "container",
   "height": 260,
   "autosize": { "type": "fit", "contains": "padding" },
-  "data": { "url": "../au_timeseries.csv" },
+  "data": { "url": "/FIT3179_Assignment_2/au_timeseries.csv" },
 
   "transform": [
     {
