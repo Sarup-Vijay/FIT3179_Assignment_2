@@ -1,18 +1,18 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": "container",
+  "width": 650,
   "height": 420,
-  "projection": { "type": "naturalEarth1" },
+  "projection": { "type": "equalEarth" },
   "layer": [
     {
       "data": {
-        "url": "/FIT3179_Assignment_2/assets/countries.geojson",
+        "url": "../assets/countries.geojson",
         "format": { "type": "topojson", "feature": "countries" }
       },
-      "mark": { "type": "geoshape", "fill": "#f0f3f8", "stroke": "#d4dbe7" }
+      "mark": { "type": "geoshape", "fill": "#f8f0f0", "stroke": "#d4dbe7" }
     },
     {
-      "data": { "url": "/FIT3179_Assignment_2/map_points.csv" },
+      "data": { "url": "../map_points.csv" },
       "mark": { "type": "circle", "opacity": 0.85, "stroke": "#222", "strokeWidth": 0.3 },
       "encoding": {
         "longitude": { "field": "lon", "type": "quantitative" },
