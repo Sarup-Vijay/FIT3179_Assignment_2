@@ -1,34 +1,65 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 1100,                   
-  "vconcat": [
+  "width": 900,
+  "height": 260,
+  "data": { "url": "../au_timeseries.csv" },
+
+  "params": [{
+    "name": "panelSel",
+    "value": "co2",
+    "bind": {
+      "input": "select",
+      "name": "Show: ",
+      "options": ["co2", "co2_per_capita", "share_global_co2"],
+      "labels":  ["Total CO₂ (Mt)", "CO₂ per capita (t)", "Share of global CO₂"]
+    }
+  }],
+
+  "layer": [
     {
-      "height": 180,
-      "data": {"url": "/FIT3179_Assignment_2/au_timeseries.csv"},
-      "mark": {"type": "area", "opacity": 0.8},
+      "transform": [{ "filter": "panelSel == 'co2'" }],
+      "mark": { "type": "area", "fill": "#22C55E", "fillOpacity": 0.35, "stroke": "#16A34A", "strokeWidth": 1 },
       "encoding": {
-        "x": {"field": "year", "type": "quantitative", "axis": {"format": "d"}},
-        "y": {"field": "co2", "type": "quantitative", "title": "CO₂ total (Mt)"}
+        "x": { "field": "year", "type": "quantitative", "axis": { "format": "d" } },
+        "y": { "field": "co2", "type": "quantitative", "title": "Total CO₂ (Mt)" },
+        "tooltip": [
+          { "field": "year", "type": "quantitative", "format": "d" },
+          { "field": "co2", "title": "Total CO₂ (Mt)", "format": ".0f" }
+        ]
       }
     },
+
     {
-      "height": 160,
-      "data": {"url": "/FIT3179_Assignment_2/au_timeseries.csv"},
-      "mark": {"type": "line"},
+      "transform": [{ "filter": "panelSel == 'co2_per_capita'" }],
+      "mark": { "type": "area", "fill": "#22C55E", "fillOpacity": 0.35, "stroke": "#16A34A", "strokeWidth": 1 },
       "encoding": {
-        "x": {"field": "year", "type": "quantitative", "axis": {"format": "d"}},
-        "y": {"field": "co2_per_capita", "type": "quantitative", "title": "CO₂ per capita (t)"}
+        "x": { "field": "year", "type": "quantitative", "axis": { "format": "d" } },
+        "y": { "field": "co2_per_capita", "type": "quantitative", "title": "CO₂ per capita (t)" },
+        "tooltip": [
+          { "field": "year", "type": "quantitative", "format": "d" },
+          { "field": "co2_per_capita", "title": "CO₂ per capita (t)", "format": ".2f" }
+        ]
       }
     },
+
     {
-      "height": 160,
-      "data": {"url": "/FIT3179_Assignment_2/au_timeseries.csv"},
-      "mark": {"type": "line"},
+      "transform": [{ "filter": "panelSel == 'share_global_co2'" }],
+      "mark": { "type": "area", "fill": "#22C55E", "fillOpacity": 0.35, "stroke": "#16A34A", "strokeWidth": 1 },
       "encoding": {
-        "x": {"field": "year", "type": "quantitative", "axis": {"format": "d"}},
-        "y": {"field": "share_global_co2", "type": "quantitative", "title": "Share of global CO₂", "axis": {"format": ".2%"}}
+        "x": { "field": "year", "type": "quantitative", "axis": { "format": "d" } },
+        "y": {
+          "field": "share_global_co2",
+          "type": "quantitative",
+          "title": "Share of global CO₂",
+          "axis": { "format": ".2%" }
+        },
+        "tooltip": [
+          { "field": "year", "type": "quantitative", "format": "d" },
+          { "field": "share_global_co2", "title": "Share of global CO₂", "format": ".2%" }
+        ]
       }
     }
   ],
-  "config": {"view": {"stroke": null}}
+
+  "config": { "view": { "stroke": null }, "axis": { "grid": true } }
 }
