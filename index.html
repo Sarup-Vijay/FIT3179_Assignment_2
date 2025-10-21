@@ -25,7 +25,7 @@
     <main>
       <h1>Australia’s Emissions: the story since 1990</h1>
       <p class="kicker">
-        A visual brief for Australians: where we sit globally, what’s driving our CO₂, and how our per-person footprint compares with our neighbours.
+        A visual brief for Australians: where we sit globally, what’s driving our CO₂, and how our per-person footprint compares with neighbouring countires.
       </p>
 
       <p class="note">
@@ -91,11 +91,11 @@
   </main>
 
   <script>
-    vegaEmbed('#map', 'specs/map.vg.json?v=2', {actions:false}).catch(console.error);
-    vegaEmbed('#fuel', 'specs/fuel_stack_au.vg.json?v=2', {actions:false}).catch(console.error);
-    vegaEmbed('#compare', 'specs/compare_percap.vg.json?v=2', {actions:false}).catch(console.error);
-    vegaEmbed('#austats', 'specs/au_metrics.vg.json?v=2', {actions:false}).catch(console.error);
-    vegaEmbed('#ghg', 'specs/global_ghg.vg.json?v=2', {actions:false}).catch(console.error);
+    vegaEmbed('#map', 'specs/map.vg.json', {actions:false}).catch(console.error);
+    vegaEmbed('#fuel', 'specs/fuel_stack_au.vg.json', {actions:false}).catch(console.error);
+    vegaEmbed('#compare', 'specs/compare_percap.vg.json', {actions:false}).catch(console.error);
+    vegaEmbed('#austats', 'specs/au_metrics.vg.json', {actions:false}).catch(console.error);
+    vegaEmbed('#ghg', 'specs/global_ghg.vg.json', {actions:false}).catch(console.error);
   </script>
 
 </body>
