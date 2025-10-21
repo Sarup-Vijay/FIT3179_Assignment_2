@@ -2,7 +2,7 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": 900,
   "height": 260,
-  "data": { "url": "../au_timeseries.csv" },
+  "data": { "url": "/FIT3179_Assignment_2/au_timeseries.csv" },
 
   "params": [{
     "name": "panelSel",
