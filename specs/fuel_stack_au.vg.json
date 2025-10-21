@@ -3,12 +3,51 @@
   "width": "container",
   "height": 260,
   "autosize": { "type": "fit", "contains": "padding" },
-  "data": {"url":"/FIT3179_Assignment_2/au_timeseries.csv"},
-  "transform":[{"fold":["coal_co2","oil_co2","gas_co2","cement_co2","flaring_co2","land_use_change_co2"],"as":["source","emissions"]}],
-  "mark":{"type":"area"},
-  "encoding":{
-    "x":{"field":"year","type":"quantitative","axis":{"format":"d"}},
-    "y":{"aggregate":"sum","field":"emissions","type":"quantitative","title":"CO₂ by source (Mt)"},
-    "color":{"field":"source","type":"nominal","title":"Source"}
+  "data": { "url": "../au_timeseries.csv" },
+
+  "transform": [
+    {
+      "fold": [
+        "coal_co2",
+        "oil_co2",
+        "gas_co2",
+        "cement_co2",
+        "flaring_co2",
+        "land_use_change_co2"
+      ],
+      "as": ["source", "emissions"]
+    },
+    {
+      "calculate": "({'coal_co2':'Coal','oil_co2':'Oil','gas_co2':'Gas','cement_co2':'Cement','flaring_co2':'Flaring','land_use_change_co2':'Land-use change'})[datum.source]",
+      "as": "src_label"
+    }
+  ],
+
+  "mark": { "type": "area", "opacity": 0.9, "stroke": "white", "strokeWidth": 0.6 },
+
+  "encoding": {
+    "x": { "field": "year", "type": "quantitative", "axis": { "format": "d" } },
+    "y": {
+      "aggregate": "sum",
+      "field": "emissions",
+      "type": "quantitative",
+      "title": "CO₂ by source (Mt)"
+    },
+
+    "color": {
+      "field": "src_label",
+      "type": "nominal",
+      "title": "Source",
+      "scale": {
+        "domain": ["Coal","Oil","Gas","Flaring","Land-use change","Cement"],
+        "range":  ["#4B5563","#E69F00","#56B4E9","#D55E00","#009E73","#9CA3AF"]
+      }
+    },
+
+    "order": {
+      "field": "src_label",
+      "type": "nominal",
+      "sort": ["Coal","Oil","Gas","Flaring","Land-use change","Cement"]
+    }
   }
 }
