@@ -3,7 +3,7 @@
   "width": "container",
   "height": 240,
   "autosize": { "type": "fit", "contains": "padding" },
-  "data": {"url":"/FIT3179_Assignment_2/global_summary.csv"},
+  "data": {"url":"../global_summary.csv"},
   "transform":[
     {"fold":["co2_including_luc","methane","nitrous_oxide"],"as":["gas","value"]},
     {"calculate":"datum.gas=='co2_including_luc'?'CO₂ (incl. LUC)':(datum.gas=='methane'?'Methane (CH₄)':'Nitrous oxide (N₂O)')","as":"gas_label"}
